@@ -3,19 +3,13 @@
 #include <time.h>
 #include <string.h>
 
+static unsgined long int get_current_unix_tsp(void) {
+     return (unsigned long it) time(NULL);
+}
 
 int genrator(void){
      // Process for getting Unix timeatamp
-     struct tm time;
-     time_t UnixTimeStamp;
-     time.tm_year = 2014 - 1900;  // Year - 1900
-     time.tm_mon = 9;           // Month, where 0 = jan
-     time.tm_mday = 31;          // Day of the month
-     time.tm_hour = 0;
-     time.tm_min = 0;
-     time.tm_sec = 0;
-     time.tm_isdst = -1;        // Is DST on? 1 = yes, 0 = no, -1 = unknown
-     UnixTimeStamp = mktime(&time);
+     unsigned long int StartingTimeStamp = get_current_unix_tsp();
 
      //Process for generating unique IP Addresses
      int val1 = 192;
@@ -60,7 +54,6 @@ int genrator(void){
 
          // Assigning Utilization to every IP Address
          int total_time =60*24; // Number of minutes for a day
-         int StartingTimeStamp=UnixTimeStamp;
          //Creating a new file based on IP address and assigning a pointer to it
          char mainPath[200]="C:\\Users\\rmste\\CLionProjects\\Temp_Project\\10-31-2014\\";
          char format[15]=".txt";
